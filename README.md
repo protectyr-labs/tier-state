@@ -50,6 +50,14 @@ Case 2 is the non-obvious one: the trial flag says "active" but the date says "e
 - **Async + sync variants** -- `getEffectiveTier` for servers (with side effects), `getEffectiveTierSync` for clients (pure)
 - **Legacy tier mapping** -- `normalizeTier` maps old tier names to current ones
 
+## Use Cases
+
+**SaaS trial management** -- User starts a 14-day trial. On day 15, if the cron job has not run yet, the inline downgrade catches it so they do not keep Pro access.
+
+**Feature gating** -- Before showing a Pro feature, check the user's effective tier. The sync variant works client-side without async overhead.
+
+**Subscription analytics** -- Track how many users are in each state (trialing, expired, converted, free) to understand conversion funnel health.
+
 ## API
 
 | Function | Purpose |
