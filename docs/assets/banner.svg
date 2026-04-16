@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 220" width="1200" height="220">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+    <linearGradient id="accentLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0"/>
+      <stop offset="15%" stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="85%" stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Subtle grid pattern -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#334155" stroke-width="0.3" opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="220" fill="url(#bg)"/>
+  <rect width="1200" height="220" fill="url(#grid)"/>
+
+  <!-- Accent line at bottom -->
+  <rect x="0" y="216" width="1200" height="4" fill="url(#accentLine)"/>
+
+  <!-- Left side: Title block -->
+  <text x="60" y="82" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="42" font-weight="700" fill="#e2e8f0" letter-spacing="-0.5">tier-state</text>
+  <text x="60" y="116" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="16" fill="#94a3b8" letter-spacing="0.3">Subscription tier resolution with trial state machine</text>
+  <text x="60" y="148" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="13" fill="#64748b" letter-spacing="0.2">5-case trial logic / inline expiry / async + sync variants</text>
+
+  <!-- Org badge -->
+  <rect x="60" y="166" width="120" height="22" rx="4" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="120" y="181" font-family="Segoe UI, system-ui, -apple-system, sans-serif" font-size="11" fill="#94a3b8" text-anchor="middle" letter-spacing="0.5">protectyr-labs</text>
+
+  <!-- Right side: State machine lifecycle visualization -->
+  <!-- Connecting lines (drawn first, behind nodes) -->
+  <line x1="730" y1="110" x2="810" y2="110" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="890" y1="110" x2="970" y2="110" stroke="#475569" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Arrow from Active to Expired (downward) -->
+  <path d="M 850 135 L 850 158 L 770 158 L 770 170" stroke="#f59e0b" stroke-width="1.5" fill="none" stroke-dasharray="4,3" opacity="0.7"/>
+
+  <!-- Arrow from Active to Converted (upward then right) -->
+  <path d="M 850 85 L 850 60 L 1010 60 L 1010 85" stroke="#475569" stroke-width="1.5" fill="none" stroke-dasharray="4,3"/>
+
+  <!-- Node 1: Trial (with clock) -->
+  <g transform="translate(690, 82)">
+    <rect x="0" y="0" width="80" height="56" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" opacity="0.9"/>
+    <!-- Clock icon -->
+    <circle cx="40" cy="20" r="8" fill="none" stroke="#f59e0b" stroke-width="1.2"/>
+    <line x1="40" y1="15" x2="40" y2="20" stroke="#f59e0b" stroke-width="1.2"/>
+    <line x1="40" y1="20" x2="44" y2="20" stroke="#f59e0b" stroke-width="1.2"/>
+    <text x="40" y="45" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">Trial</text>
+  </g>
+
+  <!-- Node 2: Active -->
+  <g transform="translate(810, 82)">
+    <rect x="0" y="0" width="80" height="56" rx="8" fill="#1e293b" stroke="#22c55e" stroke-width="1.5" opacity="0.9"/>
+    <!-- Check icon -->
+    <polyline points="32,18 38,24 50,14" fill="none" stroke="#22c55e" stroke-width="1.5" stroke-linecap="round"/>
+    <text x="40" y="45" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">Active</text>
+  </g>
+
+  <!-- Node 3: Subscribed -->
+  <g transform="translate(970, 82)">
+    <rect x="0" y="0" width="88" height="56" rx="8" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5" opacity="0.9"/>
+    <!-- Tier bars icon -->
+    <rect x="30" y="22" width="8" height="6" rx="1" fill="#3b82f6" opacity="0.5"/>
+    <rect x="40" y="18" width="8" height="10" rx="1" fill="#3b82f6" opacity="0.7"/>
+    <rect x="50" y="14" width="8" height="14" rx="1" fill="#3b82f6"/>
+    <text x="44" y="45" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0" text-anchor="middle">Subscribed</text>
+  </g>
+
+  <!-- Node 4: Expired (below, amber warning) -->
+  <g transform="translate(730, 170)">
+    <rect x="0" y="0" width="80" height="36" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+    <text x="40" y="23" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#f59e0b" text-anchor="middle" opacity="0.8">Expired</text>
+  </g>
+
+  <!-- Node 5: Converted label on the upward arrow -->
+  <text x="930" y="55" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#64748b" text-anchor="middle">converted</text>
+
+  <!-- Inline downgrade label -->
+  <text x="810" y="168" font-family="Segoe UI, system-ui, sans-serif" font-size="9" fill="#f59e0b" text-anchor="middle" opacity="0.7">inline downgrade</text>
+
+  <!-- "5 cases" small callout -->
+  <rect x="1080" y="170" width="62" height="22" rx="4" fill="#f59e0b" opacity="0.15"/>
+  <text x="1111" y="185" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#f59e0b" text-anchor="middle" font-weight="600">5 cases</text>
+</svg>
